@@ -6,3 +6,7 @@ spring:
           github:
             clientId: ${GITHUB_CLIENT}
             clientSecret: ${GITHUB_SECRET}
+            scope: read:user, user:email
+
+admin:
+  users: "PieterDup98"
