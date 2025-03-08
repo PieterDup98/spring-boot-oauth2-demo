@@ -9,7 +9,7 @@ public class DotenvConfig {
 
     @PostConstruct
     public void init() {
-        Dotenv dotenv = Dotenv.load();
+        final Dotenv dotenv = Dotenv.load();
         dotenv.entries().forEach(entry ->
                 System.setProperty(entry.getKey(), entry.getValue())
         );

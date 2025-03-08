@@ -15,15 +15,14 @@ public class HomeController {
 
     @GetMapping
     public String homePage(Authentication authentication, Model model) {
-        final OAuth2User principal = (OAuth2User) authentication.getPrincipal();
+        final boolean isAuthenticated = authentication != null && authentication.isAuthenticated();
+        model.addAttribute("isAuthenticated", isAuthenticated);
 
-        if (principal != null) {
-            final OAuth2AuthenticationToken oauthToken = (OAuth2AuthenticationToken) authentication;
+        if (isAuthenticated && authentication instanceof OAuth2AuthenticationToken oauthToken) {
+            final OAuth2User principal = (OAuth2User) authentication.getPrincipal();
 
-            // Get the registration ID (google, github, etc.)
-            String provider = oauthToken.getAuthorizedClientRegistrationId();
+            final String provider = oauthToken.getAuthorizedClientRegistrationId();
 
-            // Customize the greeting based on the authentication provider
             String greetingMessage = "Welcome " + principal.getAttribute("name") + "!";
 
             if ("google".equals(provider)) {
@@ -33,8 +32,10 @@ public class HomeController {
             }
 
             model.addAttribute("greeting", greetingMessage);
+            model.addAttribute("provider", provider);
         }
 
-        return "home"; // Return the home.html template
+        return "home"; // Return home.html template
     }
 }
+

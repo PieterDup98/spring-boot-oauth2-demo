@@ -1,18 +1,71 @@
-<!-- login.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 50px;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .login-button {
+            display: block;
+            text-decoration: none;
+            padding: 12px 20px;
+            margin: 10px auto;
+            font-size: 16px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            width: 80%;
+            text-align: center;
+            font-weight: bold;
+            color: white;
+        }
+
+        .google-login {
+            background-color: #4285F4;
+        }
+
+        .github-login {
+            background-color: #333;
+        }
+
+        .google-login:hover, .github-login:hover {
+            opacity: 0.8;
+        }
+    </style>
 </head>
 <body>
-<h1>Login</h1>
-<div>
-    <a href="/oauth2/authorization/google">Login with Google</a>
+
+<div class="container">
+    <h1>Login</h1>
+
+    <a href="/oauth2/authorization/google" class="login-button google-login">
+        Login with Google
+    </a>
+
+    <a href="/oauth2/authorization/github" class="login-button github-login">
+        Login with GitHub
+    </a>
 </div>
-<div>
-    <a href="/oauth2/authorization/github">Login with GitHub</a>
-</div>
+
 </body>
 </html>

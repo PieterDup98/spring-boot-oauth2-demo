@@ -28,7 +28,7 @@ public class GoogleContactService {
 
         String url = UriComponentsBuilder
                 .fromHttpUrl("https://people.googleapis.com/v1/people/me/connections")
-                .queryParam("personFields", "names,emailAddresses")
+                .queryParam("personFields", "names")
                 .toUriString();
 
         RestTemplate restTemplate = new RestTemplate();

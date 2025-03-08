@@ -1,9 +1,4 @@
 spring:
-  thymeleaf:
-    prefix: classpath:/templates/
-    suffix: .html
-    mode: HTML
-    cache: false
   security:
     oauth2:
       client:
@@ -16,3 +11,8 @@ spring:
             client-id: ${GITHUB_CLIENT}
             client-secret: ${GITHUB_SECRET}
             scope: read:user, user:email
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    mode: HTML
+    cache: false
