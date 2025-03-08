@@ -1,0 +1,18 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            clientId: ${GOOGLE_CLIENT}
+            clientSecret: ${GOOGLE_SECRET}
+            scope: profile, email, https://www.googleapis.com/auth/contacts.readonly
+          github:
+            client-id: ${GITHUB_CLIENT}
+            client-secret: ${GITHUB_SECRET}
+            scope: read:user, user:email
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    mode: HTML
+    cache: false
