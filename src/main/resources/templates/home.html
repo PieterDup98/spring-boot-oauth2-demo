@@ -64,8 +64,8 @@
 
     <p class="message">Welcome to your dashboard!</p>
 
-    <!-- Show "Contacts" link only if logged in with Google -->
-    <div th:if="${provider == 'google'}">
+    <!-- Show "Contacts" link only if logged in with the demo user -->
+    <div th:if="${shouldShowContactsDemo == true}">
         <a href="/contacts" class="contacts-link">View Contacts</a>
     </div>
 

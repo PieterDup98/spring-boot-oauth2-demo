@@ -16,3 +16,7 @@ spring:
     suffix: .html
     mode: HTML
     cache: false
+
+demo:
+  user:
+    nameSurname: ${DEMO_USER}

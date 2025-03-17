@@ -1,6 +1,7 @@
 package capgemini.demo.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.oauth2.client.OAuth2AuthorizedClient;
 import org.springframework.security.oauth2.client.OAuth2AuthorizedClientService;
 import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
@@ -18,6 +19,7 @@ public class GoogleContactService {
         this.authorizedClientService = authorizedClientService;
     }
 
+    @PreAuthorize("hasAuthority('SCOPE_https://www.googleapis.com/auth/contacts.readonly')") //No point calling google if the user doesn't have this SCOPE.
     public String getContacts(OAuth2AuthenticationToken authentication) {
         OAuth2AuthorizedClient client = authorizedClientService.loadAuthorizedClient(
                 authentication.getAuthorizedClientRegistrationId(),
@@ -27,7 +29,7 @@ public class GoogleContactService {
         String accessToken = client.getAccessToken().getTokenValue();
 
         String url = UriComponentsBuilder
-                .fromHttpUrl("https://people.googleapis.com/v1/people/me/connections")
+                .fromUriString("https://people.googleapis.com/v1/people/me/connections")
                 .queryParam("personFields", "names")
                 .toUriString();
 
