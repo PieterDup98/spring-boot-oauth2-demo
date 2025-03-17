@@ -11,3 +11,6 @@ GOOGLE_SECRET
 GITHUB_CLIENT
 
 GITHUB_SECRET
+
+### Add your name and surname used on Google/Github to do demo.
+DEMO_USER
